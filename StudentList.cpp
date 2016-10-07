@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -35,13 +37,22 @@ int main()
       cin.getline(s.nameLast, 81);
       cout << "Enter student ID: ";
       cin >> s.id;
+      cin.ignore(80,'\n');
       cout << "Enter student GPA: ";
       cin >> s.gpa;
-      cin.ignore();
+      cin.ignore(80, '\n');
       vec.push_back(s);
     }
     else if(strcmp(input, print) == 0){
-      cout << "print";
+      if(vec.size() == 0){
+	cout << "NO STUDENTS" << endl;
+      }
+      else{
+	cout << "STUDENT INFORMATION" << endl;
+	for(int a = 0; a < vec.size(); a++){
+	  cout << vec[a].nameFirst << " " << vec[a].nameLast << ", " << vec[a].id << ", " << setprecision(2) << fixed << vec[a].gpa << endl;
+	}
+      }
     }
     else if(strcmp(input, del) == 0){
 	cout << "delete" << endl;
